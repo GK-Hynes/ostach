@@ -44,3 +44,35 @@ img {
   border: none;
   cursor: pointer;
 }
+
+.images-section {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sub-images-section {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.main-image {
+  overflow: hidden;
+}
+
+.section {
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.information {
+  width: 60px;
+}
+
+.review-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}

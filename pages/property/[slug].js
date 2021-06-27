@@ -1,6 +1,7 @@
 import { sanityClient } from "../../sanity";
 import { isMultiple } from "../../utils";
 import Image from "../../components/image";
+import Review from "../../components/review";
 
 export default function Property({
   title,
@@ -30,33 +31,48 @@ export default function Property({
           ))}
         </div>
       </div>
-      <h2>{propertyType}</h2>
-      <h3>
-        {bedrooms} bedroom{isMultiple(bedrooms)} - {beds} bed{isMultiple(beds)}
-      </h3>
-      <hr />
-      <h4>Enhanced Clean</h4>
-      <p>This host is committed to our 5-step enhanced cleaning process.</p>
-      <h4>Amenities for everyday living</h4>
-      <p>
-        This host has equipped this property for long stays - kitchen, shampoo,
-        hairdryer included.
-      </p>
-      <h4>House Rules</h4>
-      <p>
-        This property isn't suitable for pets and the host does not allow
-        parties or smoking.
-      </p>
 
-      <div className="price-box">
-        <h2>€{pricePerNight}</h2>
-        <h3>
-          {reviewAmount} review{isMultiple(reviewAmount)}
-        </h3>
-        <button className="button" onClick={() => {}}>
-          Change Dates
-        </button>
+      <div className="section">
+        <div className="information">
+          <h2>{propertyType}</h2>
+          <h3>
+            {bedrooms} bedroom{isMultiple(bedrooms)} - {beds} bed
+            {isMultiple(beds)}
+          </h3>
+          <hr />
+          <h4>Enhanced Clean</h4>
+          <p>This host is committed to our 5-step enhanced cleaning process.</p>
+          <h4>Amenities for everyday living</h4>
+          <p>
+            This host has equipped this property for long stays - kitchen,
+            shampoo, hairdryer included.
+          </p>
+          <h4>House Rules</h4>
+          <p>
+            This property isn't suitable for pets and the host does not allow
+            parties or smoking.
+          </p>
+        </div>
+        <div className="price-box">
+          <h2>€{pricePerNight}</h2>
+          <h3>
+            {reviewAmount} review{isMultiple(reviewAmount)}
+          </h3>
+          <button className="button" onClick={() => {}}>
+            Change Dates
+          </button>
+        </div>
       </div>
+      <hr />
+      <h4>{description}</h4>
+      <hr />
+      <h2>
+        {reviewAmount} review{isMultiple(reviewAmount)}
+      </h2>
+      {reviewAmount > 0 &&
+        reviews.map((review) => <Review key={review._key} review={review} />)}
+      <hr />
+      <h2>Location</h2>
     </div>
   );
 }
