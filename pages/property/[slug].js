@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { sanityClient } from "../../sanity";
 import { isMultiple } from "../../utils";
 import Image from "../../components/image";
 import Review from "../../components/review";
+import Map from "../../components/map";
 
 export default function Property({
   title,
@@ -34,7 +36,9 @@ export default function Property({
 
       <div className="section">
         <div className="information">
-          <h2>{propertyType}</h2>
+          <h2>
+            {propertyType} hosted by {host?.name}
+          </h2>
           <h3>
             {bedrooms} bedroom{isMultiple(bedrooms)} - {beds} bed
             {isMultiple(beds)}
@@ -58,9 +62,9 @@ export default function Property({
           <h3>
             {reviewAmount} review{isMultiple(reviewAmount)}
           </h3>
-          <button className="button" onClick={() => {}}>
-            Change Dates
-          </button>
+          <Link href="/">
+            <button className="button">Change Dates</button>
+          </Link>
         </div>
       </div>
       <hr />
@@ -73,6 +77,7 @@ export default function Property({
         reviews.map((review) => <Review key={review._key} review={review} />)}
       <hr />
       <h2>Location</h2>
+      <Map location={location} />
     </div>
   );
 }
@@ -109,6 +114,20 @@ export async function getServerSideProps(pageContext) {
 
   const property = await sanityClient.fetch(query, { pageSlug });
 
+  const {
+    title,
+    location,
+    propertyType,
+    mainImage,
+    images,
+    pricePerNight,
+    beds,
+    bedrooms,
+    description,
+    host,
+    reviews
+  } = property;
+
   if (!property) {
     return {
       props: null,
@@ -117,17 +136,17 @@ export async function getServerSideProps(pageContext) {
   } else {
     return {
       props: {
-        title: property.title,
-        location: property.location,
-        propertyType: property.propertyType,
-        mainImage: property.mainImage,
-        images: property.images,
-        pricePerNight: property.pricePerNight,
-        beds: property.beds,
-        bedrooms: property.bedrooms,
-        description: property.description,
-        host: property.host,
-        reviews: property.reviews
+        title,
+        location,
+        propertyType,
+        mainImage,
+        images,
+        pricePerNight,
+        beds,
+        bedrooms,
+        description,
+        host,
+        reviews
       }
     };
   }

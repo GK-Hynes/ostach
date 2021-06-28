@@ -13,24 +13,36 @@ body {
   font-family: "Noto Sans JP", sans-serif;
 }
 
+img {
+  width: 100%;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   margin: 20px 50px;
 }
 
-img {
-  width: 100%;
+.section {
+  margin: 20px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.information {
+  width: 60%;
 }
 
 .price-box {
   width: 35%;
-  min-height: 250px;
+  height: 250px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   box-shadow: rgb(0 0 0 / 12%) 0 6px 16px;
   padding: 24px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .button {
@@ -59,16 +71,6 @@ img {
 
 .main-image {
   overflow: hidden;
-}
-
-.section {
-  margin: 20px 0 0 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.information {
-  width: 60px;
 }
 
 .review-image {
