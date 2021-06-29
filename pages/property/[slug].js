@@ -21,15 +21,20 @@ export default function Property({
   const reviewAmount = reviews.length;
   return (
     <div className="container">
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <p>
         {reviewAmount} review{isMultiple(reviewAmount)}
       </p>
       <div className="images-section">
         <Image identifier="main-image" image={mainImage} />
         <div className="sub-images-section">
-          {images.map((_key, image) => (
-            <Image key={_key} identifier="image" image={image} />
+          {images.map((image) => (
+            <Image
+              key={image._key}
+              identifier="image"
+              image={image}
+              className="sub-image"
+            />
           ))}
         </div>
       </div>

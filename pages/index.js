@@ -5,28 +5,34 @@ import { isMultiple } from "../utils";
 export default function Home({ properties }) {
   return (
     <>
-      <h1>Óstach</h1>
-      <div className="main">
+      <main className="main">
         <div className="feed-container">
-          <h2>Places to stay near you</h2>
+          <h2 className="heading-main">Places to stay near you</h2>
           <div className="feed">
             {properties.map((property) => (
-              <Link href={`property/${property.slug.current}`}>
-                <div key={property._id} className="card">
-                  <img src={urlFor(property.mainImage)} alt={property.name} />
-                  <p>
-                    {property.reviews.length} review
-                    {isMultiple(property.reviews.length)}
-                  </p>
-                  <h3>{property.title}</h3>
-                  <p>€{property.pricePerNight} per night</p>
+              <Link
+                key={property._id}
+                href={`property/${property.slug.current}`}
+              >
+                <div className="card">
+                  <div className="card-top">
+                    <img src={urlFor(property.mainImage)} alt={property.name} />
+                  </div>
+                  <div className="card-body">
+                    <p>
+                      {property.reviews.length} review
+                      {isMultiple(property.reviews.length)}
+                    </p>
+                    <h3>{property.title}</h3>
+                    <p>€{property.pricePerNight} per night</p>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
           <div className="map"></div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

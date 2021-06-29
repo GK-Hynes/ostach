@@ -6,6 +6,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red; */
 }
 
 html,
@@ -15,6 +16,11 @@ body {
 
 img {
   width: 100%;
+}
+
+h2,
+h3 {
+  margin-bottom: 16px;
 }
 
 .container {
@@ -59,17 +65,26 @@ img {
 
 .images-section {
   display: flex;
+  flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .sub-images-section {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   overflow: hidden;
 }
 
 .main-image {
+  overflow: hidden;
+}
+
+.image {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
   overflow: hidden;
 }
 
@@ -94,6 +109,7 @@ img {
 .feed {
   display: flex;
   flex-wrap: wrap;
+  gap: 16px;
 }
 
 .map {
@@ -101,7 +117,46 @@ img {
 }
 
 .card {
-  padding: 10px;
   border-radius: 20px;
   cursor: pointer;
+  background: #fff;
+  max-width: 300px;
+}
+
+.card-top {
+  max-height: 60%;
+  overflow: hidden;
+}
+
+.card-top img {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.nav {
+  position: sticky;
+  z-index: 100;
+  box-shadow: rgb(0 0 0 / 12%) 0 6px 16px;
+  padding: 30px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 200px;
+}
+
+.logo {
+  width: 24px;
+  width: 24px;
+  margin-right: 8px;
+}
+
+.heading-main {
 }
