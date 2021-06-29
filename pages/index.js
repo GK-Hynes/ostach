@@ -1,6 +1,7 @@
 import { sanityClient, urlFor } from "../sanity";
 import Link from "next/link";
 import { isMultiple } from "../utils";
+import ClusterMap from "../components/clusterMap";
 
 export default function Home({ properties }) {
   return (
@@ -30,7 +31,9 @@ export default function Home({ properties }) {
               </Link>
             ))}
           </div>
-          <div className="map"></div>
+        </div>
+        <div className="map">
+          <ClusterMap properties={properties} />
         </div>
       </main>
     </>
